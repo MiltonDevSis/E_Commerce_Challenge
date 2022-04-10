@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single"/>
+
+    <item
+        android:id="@+id/actionCart"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:orderInCategory="100"
+        android:title="Cart"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/actionHome"
+        android:icon="@drawable/ic_home_24"
+        android:orderInCategory="100"
+        android:title="Sign out"
+        app:showAsAction="never" />
+
+</menu>

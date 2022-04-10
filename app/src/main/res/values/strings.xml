@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ecommerce_challenge</string>
+    <string name="icon_search">Icon search</string>
+    <string name="action_settings">Settings</string>
+    <string name="product_details">Product Details</string>
+    <string name="availability">See if it\'s available</string>
 </resources>
