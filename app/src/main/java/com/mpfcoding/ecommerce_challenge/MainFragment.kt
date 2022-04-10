@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import com.mpfcoding.ecommerce_challenge.model.Product
 import com.mpfcoding.ecommerce_challenge.products.ProductDetails
 import com.mpfcoding.ecommerce_challenge.products.ProductsAdapter
@@ -40,16 +39,16 @@ class MainFragment : androidx.fragment.app.Fragment() {
 
     private fun loadRecyclerView(products: List<Product>) {
         recycler_view.apply {
-            layoutManager = GridLayoutManager(activity, 2)
 
-            adapter = ProductsAdapter(products) { extraTitle, teste, photoView ->
+            adapter = ProductsAdapter(products) { title, url, price, isSale, photo ->
+                val product = Product(title, url, price, isSale)
 
                 val intent = Intent(activity, ProductDetails::class.java)
-                intent.putExtra("title", extraTitle)
+                intent.putExtra("my_product", product)
 
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     activity as AppCompatActivity,
-                    photoView,
+                    photo,
                     "photoToAnimate"
                 )
                 startActivity(intent, options.toBundle())

@@ -26,19 +26,26 @@ class LoginActivity : AppCompatActivity() {
 
             progressBar.visibility = View.VISIBLE
 
-            val email = edit_document.text.toString()
-            val password = edit_password.text.toString()
+            if (validateValues()){
+                val email = edit_document.text.toString()
+                val password = edit_password.text.toString()
 
-            auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    progressBar.visibility = View.GONE
-                } else {
-                    Toast.makeText(this, "User not find", Toast.LENGTH_SHORT).show()
-                    progressBar.visibility = View.GONE
-                }
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            startActivity(Intent(this, MainActivity::class.java))
+                            progressBar.visibility = View.GONE
+                        } else {
+                            Toast.makeText(this, "User not find", Toast.LENGTH_SHORT).show()
+                            progressBar.visibility = View.GONE
+                        }
+                    }
             }
         }
+    }
+
+    private fun validateValues(): Boolean{
+        // TODO ("Implementar validacao de dados")
+        return true
     }
 }

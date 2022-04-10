@@ -1,8 +1,10 @@
 package com.mpfcoding.ecommerce_challenge.model
 
+import java.io.Serializable
+
 data class Product(
-    val title: String,
+    var title: String,
     val photoUrl: String,
     val price: Double,
     val isOnSale: Boolean
-)
+): Serializable

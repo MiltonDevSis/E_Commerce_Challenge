@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.mpfcoding.ecommerce_challenge.R
 import com.mpfcoding.ecommerce_challenge.model.Product
 import com.squareup.picasso.Picasso
@@ -12,8 +13,8 @@ import kotlinx.android.synthetic.main.product_row.view.*
 
 class ProductsAdapter(
     private val products: List<Product>,
-    private val onClickProduct: (title: String, photoUrl: String, photoView: View) -> Unit
-) : androidx.recyclerview.widget.RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
+    private val onClickProduct: (title: String, photoUrl: String, price: Double, isSale: Boolean, photoView: View) -> Unit
+) : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = products[position]
@@ -28,7 +29,7 @@ class ProductsAdapter(
         }
 
         holder.image.setOnClickListener {
-            onClickProduct.invoke(product.title, product.photoUrl, holder.image)
+            onClickProduct.invoke(product.title, product.photoUrl, product.price, product.isOnSale, holder.image)
         }
     }
 
@@ -39,7 +40,7 @@ class ProductsAdapter(
 
     override fun getItemCount() = products.size
 
-    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.photo)
         val title: TextView = itemView.findViewById(R.id.title)
         val price: TextView = itemView.findViewById(R.id.price)
